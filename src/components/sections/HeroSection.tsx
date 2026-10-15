@@ -1,63 +1,80 @@
+import ring from '@/assets/images/splash/ring.svg';
+import star from '@/assets/images/splash/star.svg';
+import MatchCard from '@/components/preview/MatchCard';
+import StageBadge from '@/components/preview/StageBadge';
 import Character from '@/components/ui/Character';
 import StoreButtons from '@/components/ui/StoreButtons';
+import Typography from '@/components/ui/Typography';
 import { HERO_CHARACTER } from '@/constants/character';
 
+/**
+ * 앱 스플래시(`AppSplash`)의 배경을 그대로 가져왔다.
+ * primary-600 → (50%) primary-600 → secondary-100 그라디언트에 링·별 장식.
+ */
 export default function HeroSection() {
   return (
-    <section id="top" className="relative -mt-16 overflow-hidden pt-16">
-      <div
+    <section
+      id="top"
+      className="relative -mt-16 overflow-hidden bg-linear-to-b from-primary-600 from-50% to-secondary-100 pt-16"
+    >
+      <img
+        src={ring}
+        alt=""
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_80%_30%,var(--color-primary-100),transparent),radial-gradient(40%_40%_at_10%_80%,var(--color-secondary-100),transparent)]"
+        className="pointer-events-none absolute top-[8.8%] -left-[7.2%] w-[189px] opacity-90"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-12 pb-20 sm:px-6 md:grid-cols-2 md:pt-20 md:pb-28">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-3 py-1.5 text-sm font-bold text-primary-700">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-600" />
-            여러분들의 동네리그에 참여해보세요
-          </p>
-          <h1 className="mt-6 font-title text-5xl leading-[1.15] text-gray-800 sm:text-6xl">
+      <img
+        src={star}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute -right-[72px] bottom-0 w-[186px] -rotate-[24.2deg] sm:w-[240px]"
+      />
+
+      <div className="relative mx-auto grid max-w-page items-center gap-3xl px-lg pt-3xl pb-5xl sm:px-2xl md:grid-cols-2 md:pt-5xl md:pb-6xl">
+        <div className="flex flex-col items-start gap-2xl">
+          <Typography
+            as="span"
+            variant="h3"
+            className="rounded-full bg-white/20 px-md py-xs text-white"
+          >
+            여러분들의 동네 리그에 참여해보세요!
+          </Typography>
+          <h1 className="font-title text-4xl text-white sm:text-5xl">
             우리가 남긴
             <br />
-            <span className="text-primary-600">우리 동네</span>를
+            <span className="inline-block rounded-sm bg-white px-sm leading-none text-primary-600">
+              우리 동네
+            </span>
+            를
             <br />
             살펴볼까요?
           </h1>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-gray-500">
+          <Typography variant="body1" className="max-w-[440px] leading-relaxed text-primary-100">
             매주 이웃 동네와 미션 대결이 열려요. 동네 곳곳을 사진으로 남기고, 우리 동네를 랭킹 1위로
             올려보세요.
-          </p>
-          <div className="mt-8">
-            <StoreButtons />
-          </div>
+          </Typography>
+          <StoreButtons inverted />
         </div>
 
-        <div className="relative mx-auto w-full max-w-md">
-          <div
-            aria-hidden
-            className="absolute inset-[8%] rounded-full bg-linear-to-br from-primary-200 to-secondary-200 blur-2xl"
-          />
+        <div className="relative mx-auto w-full max-w-[420px]">
+          <div aria-hidden className="absolute inset-[10%] rounded-full bg-white/25" />
           <Character
             config={HERO_CHARACTER}
             label="티키타카 기본 캐릭터"
             className="relative animate-float"
           />
-          <MatchBadge />
+          <MatchCard
+            team1={{ name: '옆 동네', score: 1240 }}
+            team2={{ name: '우리 동네', score: 1385 }}
+            className="absolute top-[4%] -left-lg scale-90 sm:-left-3xl sm:scale-100"
+          />
+          <StageBadge
+            season={1}
+            round={2}
+            className="absolute right-0 -bottom-sm left-0 mx-auto w-fit"
+          />
         </div>
       </div>
     </section>
-  );
-}
-
-/** 앱 홈의 매치 카드를 본뜬 장식. 동네 이름은 예시다. */
-function MatchBadge() {
-  return (
-    <div className="absolute top-[6%] -left-2 rounded-2xl bg-white/95 px-4 py-3 shadow-lg ring-1 shadow-gray-800/5 ring-gray-100 sm:-left-8">
-      <p className="text-xs font-medium text-gray-400">이번 라운드 대결</p>
-      <p className="mt-1 text-sm font-bold text-gray-800">
-        <span className="text-primary-600">우리 동네</span>
-        <span className="mx-1.5 text-gray-300">VS</span>
-        <span className="text-secondary-500">옆 동네</span>
-      </p>
-    </div>
   );
 }

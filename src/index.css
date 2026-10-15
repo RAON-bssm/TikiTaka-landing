@@ -11,8 +11,15 @@
 /*
  * 디자인 토큰. TikiTaka-app의 `src/constants/colors.js`, `tailwind.config.js`와 값을 맞춘다.
  * 앱 팔레트가 바뀌면 여기도 함께 바꾼다.
+ *
+ * 앱 규칙과 같이 색·간격·반경·폰트 크기는 토큰만 쓴다. Tailwind 기본 색·반경·폰트 크기는
+ * 비워 두어 토큰 밖의 값이 섞이지 않게 한다. 요소 고유 크기(`w-`, `h-`)만 숫자·임의값을 허용한다.
  */
 @theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
   --color-gray-50: #f8f9fb;
   --color-gray-100: #eef1f6;
   --color-gray-200: #dde2ec;
@@ -43,12 +50,55 @@
   --color-secondary-800: #23428c;
   --color-secondary-900: #1b326b;
 
+  /* 앱 spacing. 5xl·6xl은 웹 섹션 여백용으로 랜딩에만 추가했다. */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 48px;
+  --spacing-5xl: 64px;
+  --spacing-6xl: 96px;
+
+  /* 같은 이름이라도 spacing과 값이 다르다(xl: spacing 20px, radius 24px). */
+  --radius-*: initial;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --text-*: initial;
+  --text-xs: 12px;
+  --text-xs--line-height: 14px;
+  --text-sm: 14px;
+  --text-sm--line-height: 16px;
+  --text-md: 16px;
+  --text-md--line-height: 19px;
+  --text-lg: 18px;
+  --text-lg--line-height: 21px;
+  --text-xl: 20px;
+  --text-xl--line-height: 24px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 28px;
+  --text-3xl: 32px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 40px;
+  --text-4xl--line-height: 48px;
+  --text-5xl: 64px;
+  --text-5xl--line-height: 72px;
+
+  --container-page: 1120px;
+
   --font-sans:
     'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
     'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   --font-title: 'OkDanDan', var(--font-sans);
 
   --animate-float: float 4s ease-in-out infinite;
+  --animate-ripple: ripple 1.8s ease-out infinite;
 
   @keyframes float {
     0%,
@@ -57,6 +107,18 @@
     }
     50% {
       transform: translateY(-12px);
+    }
+  }
+
+  /* 앱 StageBadge의 PulsingDot과 같은 값(2.6배, 1800ms, 0.5 → 0). */
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
     }
   }
 }
@@ -68,7 +130,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-gray-700 antialiased;
+    @apply bg-white font-sans font-medium text-gray-700 antialiased;
     word-break: keep-all;
   }
 

@@ -1,4 +1,5 @@
 import SectionHeading from '@/components/ui/SectionHeading';
+import Typography from '@/components/ui/Typography';
 
 const STEPS = [
   {
@@ -21,21 +22,36 @@ const STEPS = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how" className="scroll-mt-16 bg-gray-50 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="how" className="scroll-mt-16 bg-gray-50 py-5xl sm:py-6xl">
+      <div className="mx-auto flex max-w-page flex-col gap-4xl px-lg sm:px-2xl">
         <SectionHeading
           eyebrow="HOW IT WORKS"
           title="일주일에 한 번, 동네 대항전"
           description="한 시즌은 4라운드, 한 라운드는 7일이에요. 매 라운드 새로운 상대와 새로운 미션이 기다려요."
         />
-        <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid gap-md sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <li key={step.title} className="rounded-3xl bg-white p-6 ring-1 ring-gray-100">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-600 font-title text-lg text-white">
-                {i + 1}
-              </span>
-              <h3 className="mt-5 text-lg font-bold text-gray-800">{step.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-gray-500">{step.body}</p>
+            <li
+              key={step.title}
+              className="flex flex-col items-start gap-md rounded-md border border-gray-100 bg-white p-2xl"
+            >
+              <Typography
+                as="span"
+                variant="h4"
+                className={`rounded-full px-md py-xs ${
+                  i === STEPS.length - 1
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-primary-100 text-primary-600'
+                }`}
+              >
+                STEP {i + 1}
+              </Typography>
+              <Typography as="h3" variant="h2" className="text-gray-800">
+                {step.title}
+              </Typography>
+              <Typography variant="body2" className="leading-relaxed text-gray-500">
+                {step.body}
+              </Typography>
             </li>
           ))}
         </ol>

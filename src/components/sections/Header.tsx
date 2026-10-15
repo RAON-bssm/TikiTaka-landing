@@ -1,4 +1,7 @@
 import logo from '@/assets/icons/logo.webp';
+import logoWhite from '@/assets/images/splash/logo-white.svg';
+import Button from '@/components/ui/Button';
+import Typography from '@/components/ui/Typography';
 import { useEffect, useState } from 'react';
 
 const NAV = [
@@ -7,6 +10,7 @@ const NAV = [
   { href: '#character', label: '캐릭터' },
 ];
 
+/** 히어로(주황 배경) 위에서는 흰 로고, 스크롤하면 앱 헤더처럼 흰 바탕에 컬러 로고. */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,29 +24,38 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-colors ${
-        scrolled ? 'border-b border-gray-100 bg-white/85 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'border-b border-gray-100 bg-white/90 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#top" aria-label="티키타카 홈">
-          <img src={logo} alt="티키타카" className="h-7 w-auto" />
+      <div className="mx-auto flex h-16 max-w-page items-center justify-between px-lg sm:px-2xl">
+        <a href="#top" aria-label="티키타카 홈" className="hover:opacity-70">
+          <img
+            src={scrolled ? logo : logoWhite}
+            alt="티키타카"
+            className="h-8 w-[124px] object-contain object-left"
+          />
         </a>
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex items-center gap-xs">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800 md:block"
+              className={`hidden rounded-sm px-md py-sm transition-colors md:block ${
+                scrolled ? 'text-gray-600 hover:bg-gray-50' : 'text-white hover:bg-white/15'
+              }`}
             >
-              {item.label}
+              <Typography as="span" variant="body3">
+                {item.label}
+              </Typography>
             </a>
           ))}
-          <a
+          <Button
             href="#download"
-            className="ml-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-primary-700"
-          >
-            앱 다운로드
-          </a>
+            content="앱 다운로드"
+            size="sm"
+            variant={scrolled ? 'primary' : 'white'}
+            className="ml-sm"
+          />
         </nav>
       </div>
     </header>

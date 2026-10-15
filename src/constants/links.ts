@@ -6,6 +6,5 @@ export const TERMS_OF_SERVICE_URL =
 
 /** 스토어 출시 전에는 null로 두면 "출시 예정" 배지로 보인다. */
 export const APP_STORE_URL: string | null = null;
-export const PLAY_STORE_URL: string | null = null;
 
 export const GITHUB_URL = 'https://github.com/RAON-bssm';

@@ -1,34 +1,34 @@
-import symbol from '@/assets/images/symbol.webp';
+import Character from '@/components/ui/Character';
 import StoreButtons from '@/components/ui/StoreButtons';
+import Typography from '@/components/ui/Typography';
+import { HERO_CHARACTER } from '@/constants/character';
 
+/** 앱 홈 `BannerCard`처럼 흰색 → 주황 가로 그라디언트에 캐릭터를 오른쪽에 둔다. */
 export default function DownloadSection() {
   return (
-    <section id="download" className="scroll-mt-16 px-4 pb-20 sm:px-6 sm:pb-28">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-primary-600 px-6 py-14 text-center sm:px-12 sm:py-20">
-        <div
-          aria-hidden
-          className="absolute -top-24 -right-24 h-72 w-72 rounded-full border-[40px] border-white/10"
-        />
-        <div
-          aria-hidden
-          className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-secondary-500/20 blur-2xl"
-        />
-        <img
-          src={symbol}
-          alt=""
-          className="relative mx-auto h-20 w-20 rounded-3xl bg-white p-3 shadow-xl"
-        />
-        <h2 className="relative mt-6 font-title text-3xl leading-tight text-white sm:text-5xl">
-          이번 라운드,
-          <br />
-          우리 동네가 이길 차례
-        </h2>
-        <p className="relative mx-auto mt-4 max-w-md text-primary-100 sm:text-lg">
-          지금 티키타카를 내려받고 동네 리그에 합류하세요.
-        </p>
-        <div className="relative mt-8 flex justify-center">
-          <StoreButtons inverted />
+    <section id="download" className="scroll-mt-16 px-lg pb-5xl sm:px-2xl sm:pb-6xl">
+      <div className="relative mx-auto flex max-w-page flex-col items-center gap-2xl overflow-hidden rounded-xl border border-gray-100 bg-linear-to-b from-white from-40% to-primary-400 px-2xl py-3xl md:flex-row md:justify-between md:bg-linear-to-r md:from-37% md:via-primary-200 md:via-60% md:to-primary-600 md:px-5xl md:py-4xl">
+        <div className="flex flex-col items-center gap-lg text-center md:items-start md:text-left">
+          <Typography variant="h3" className="text-primary-600">
+            지금 바로 시작하기
+          </Typography>
+          <h2 className="font-title text-3xl text-gray-700 sm:text-4xl">
+            이번 라운드,
+            <br />
+            <span className="text-primary-600">우리 동네</span>가 이길 차례
+          </h2>
+          <Typography variant="body2" className="text-gray-500">
+            티키타카를 내려받고 동네 리그에 합류하세요.
+          </Typography>
+          <div className="mt-sm">
+            <StoreButtons />
+          </div>
         </div>
+        <Character
+          config={HERO_CHARACTER}
+          label="티키타카 기본 캐릭터"
+          className="w-[220px] shrink-0 md:w-[280px]"
+        />
       </div>
     </section>
   );

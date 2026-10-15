@@ -31,7 +31,7 @@ pnpm dev
 
 ## 스토어 링크
 
-`src/constants/links.ts`의 `APP_STORE_URL`, `PLAY_STORE_URL`이 `null`이면 "출시 예정" 배지로 보입니다. 출시 후 URL을 넣어 주세요.
+`src/constants/links.ts`의 `APP_STORE_URL`이 `null`이면 "출시 예정" 배지로 보입니다. 출시 후 URL을 넣어 주세요.
 
 ## 커밋 컨벤션
 
