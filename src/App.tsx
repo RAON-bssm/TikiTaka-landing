@@ -6,6 +6,7 @@ import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import HomeBaseSection from '@/components/sections/HomeBaseSection';
 import HowItWorksSection from '@/components/sections/HowItWorksSection';
+import TerritorySection from '@/components/sections/TerritorySection';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <HowItWorksSection />
         <FeaturesSection />
         <HomeBaseSection />
+        <TerritorySection />
         <CharacterSection />
         <DownloadSection />
       </main>

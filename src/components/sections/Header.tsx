@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 const NAV = [
   { href: '#how', label: '이용 방법' },
   { href: '#features', label: '주요 기능' },
+  { href: '#territory', label: '땅따먹기' },
   { href: '#character', label: '캐릭터' },
 ];
 
