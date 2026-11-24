@@ -1,8 +1,9 @@
-import { APP_STORE_URL } from '@/constants/links';
+import { APP_STORE_URL, ONE_STORE_URL } from '@/constants/links';
 import Typography from './Typography';
 
 const STORES = [
-  { name: 'App Store', caption: 'Download on the', url: APP_STORE_URL, icon: AppleIcon },
+  { name: 'App Store', caption: '지금 받기', url: APP_STORE_URL, icon: AppleIcon },
+  { name: 'ONE store', caption: '지금 받기', url: ONE_STORE_URL, icon: StoreIcon },
 ];
 
 interface StoreButtonsProps {
@@ -55,6 +56,22 @@ function AppleIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden>
       <path d="M16.37 12.73c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74s1.78.74 2.99.72c1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.4-3.69ZM14.09 5.98c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.96 2.79 1.02.08 2.06-.52 2.69-1.27Z" />
+    </svg>
+  );
+}
+
+function StoreIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6 fill-none stroke-current"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M5 8h14l-1 12H6L5 8Z" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
     </svg>
   );
 }

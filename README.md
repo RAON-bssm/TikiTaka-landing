@@ -31,7 +31,7 @@ pnpm dev
 
 ## 스토어 링크
 
-`src/constants/links.ts`의 `APP_STORE_URL`이 `null`이면 "출시 예정" 배지로 보입니다. 출시 후 URL을 넣어 주세요.
+`src/constants/links.ts`의 `APP_STORE_URL`(App Store), `ONE_STORE_URL`(원스토어)에 배포 주소가 들어 있습니다. 값을 `null`로 두면 해당 버튼이 "출시 예정" 배지로 보입니다.
 
 ## 커밋 컨벤션
 
